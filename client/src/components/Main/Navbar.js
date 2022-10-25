@@ -26,7 +26,7 @@ const Navbar = () => {
           />
         </Link>
         <ul>
-          <CustomLink to="/upload">Publier</CustomLink>
+          {/* <CustomLink to="/upload">Publier</CustomLink> */}
           <CustomLink to="/profil">Profil</CustomLink>
           < Deconnexion/>
         </ul>

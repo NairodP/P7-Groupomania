@@ -1,3 +1,4 @@
+const postModel = require("../models/post.model");
 const PostModel = require("../models/post.model");
 const UserModel = require("../models/user.model");
 const { uploadErrors } = require("../utils/errors.utils");
@@ -28,7 +29,7 @@ module.exports.createPost = async (req, res) => {
       if (req.file.size > 500000) throw Error("max size");
     } catch (err) {
       const errors = uploadErrors(err);
-      return res.status(401).json({ errors });
+      return res.status(201).json({ errors });
     }
     fileName = req.body.posterId + Date.now() + ".jpg";
 
@@ -96,8 +97,7 @@ module.exports.likePost = async (req, res) => {
       {
         $addToSet: { likers: req.body.id },
       },
-      { new: true }
-    )
+      { new: true })
       .then((data) => res.send(data))
       .catch((err) => res.status(500).send({ message: err }));
 
@@ -106,13 +106,12 @@ module.exports.likePost = async (req, res) => {
       {
         $addToSet: { likes: req.params.id },
       },
-      { new: true }
-    )
-      .then((data) => res.send(data))
-      .catch((err) => res.status(500).send({ message: err }));
-  } catch (err) {
-    return res.status(400).send(err);
-  }
+      { new: true })
+            .then((data) => res.send(data))
+            .catch((err) => res.status(500).send({ message: err }));
+    } catch (err) {
+        return res.status(400).send(err);
+    }
 };
 
 module.exports.unlikePost = async (req, res) => {
@@ -125,23 +124,21 @@ module.exports.unlikePost = async (req, res) => {
       {
         $pull: { likers: req.body.id },
       },
-      { new: true }
-    )
-      .then((data) => res.send(data))
-      .catch((err) => res.status(500).send({ message: err }));
+      { new: true })
+            .then((data) => res.send(data))
+            .catch((err) => res.status(500).send({ message: err }));
 
     await UserModel.findByIdAndUpdate(
       req.body.id,
       {
         $pull: { likes: req.params.id },
       },
-      { new: true }
-    )
-      .then((data) => res.send(data))
-      .catch((err) => res.status(500).send({ message: err }));
-  } catch (err) {
-    return res.status(400).send(err);
-  }
+      { new: true })
+            .then((data) => res.send(data))
+            .catch((err) => res.status(500).send({ message: err }));
+    } catch (err) {
+        return res.status(400).send(err);
+    }
 };
 
 module.exports.commentPost = (req, res) => {
@@ -155,19 +152,18 @@ module.exports.commentPost = (req, res) => {
         $push: {
           comments: {
             commenterId: req.body.commenterId,
-            commenterFirstName: req.body.commenterFirstName,
+            commenterPseudo: req.body.commenterPseudo,
             text: req.body.text,
             timestamp: new Date().getTime(),
           },
         },
       },
-      { new: true }
-    )
-      .then((data) => res.send(data))
-      .catch((err) => res.status(500).send({ message: err }));
-  } catch (err) {
-    return res.status(400).send(err);
-  }
+      { new: true })
+            .then((data) => res.send(data))
+            .catch((err) => res.status(500).send({ message: err }));
+    } catch (err) {
+        return res.status(400).send(err);
+    }
 };
 
 module.exports.editCommentPost = (req, res) => {
@@ -207,11 +203,10 @@ module.exports.deleteCommentPost = (req, res) => {
           },
         },
       },
-      { new: true }
-    )
-      .then((data) => res.send(data))
-      .catch((err) => res.status(500).send({ message: err }));
-  } catch (err) {
-    return res.status(400).send(err);
-  }
+      { new: true })
+            .then((data) => res.send(data))
+            .catch((err) => res.status(500).send({ message: err }));
+    } catch (err) {
+        return res.status(400).send(err);
+    }
 };

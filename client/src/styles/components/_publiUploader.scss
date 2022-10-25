@@ -46,11 +46,13 @@
           font-size: 1.5rem;
         }
 
-        input {
+        input, textarea {
+          max-width: 530px;
+          min-width: 330px;
           border: none;
           outline: none;
           padding: .5em;
-          font-size: 1.6rem;
+          font-size: 1.4rem;
           border-radius: .2em;
           background-color: rgba(191, 197, 239, 0.35);
           color: $white;

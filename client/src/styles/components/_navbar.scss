@@ -49,9 +49,11 @@
   align-items: center;
 
   .photo-profil {
-    width: 5%;
+    width: 110px;
+    height: 110px;
     border-radius: 50%;
     padding: 1rem;
+    object-fit: cover;
   }
   .vertical-line {
     border-right: 1px solid black;

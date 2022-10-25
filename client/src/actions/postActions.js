@@ -99,12 +99,12 @@ export const deletePost = (postId) => {
   };
 };
 
-export const addComment = (postId, commenterId, text, commenterPseudo) => {
+export const addComment = (postId, commenterId, text, commenterFirstName) => {
   return (dispatch) => {
     return axios({
       method: "patch",
       url: `${process.env.REACT_APP_API_URL}api/post/comment-post/${postId}`,
-      data: { commenterId, text, commenterPseudo },
+      data: { commenterId, text, commenterFirstName },
     })
       .then((res) => {
         dispatch({ type: ADD_COMMENT, payload: { postId } });

@@ -38,7 +38,9 @@ const Profil = () => {
           </div>
           <div className="line"></div>
           <div className="upload-img">
+
             <UploadImg />
+            
           </div>
 
           <div className="bio-container">

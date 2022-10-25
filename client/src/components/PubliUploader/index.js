@@ -1,47 +1,96 @@
-import React from "react";
-import Navbar from "../../components/Main/Navbar";
+// import React, { useState } from "react";
+// import { useDispatch, useSelector } from "react-redux";
+// import Navbar from "../../components/Main/Navbar";
+// import { addPost, getPosts } from "../../actions/postActions";
+// import { isEmpty, timestampParser } from "../Utils";
 
-const PubliUploader = () => {
-  return (
-    <>
-      <Navbar />
+// const PubliUploader = () => {
+//   const [message, setMessage] = useState("");
+//   const [file, setFile] = useState();
+//   const [postPicture, setPostPicture] = useState(null);
+//   const userData = useSelector((state) => state.userReducer);
+//   const error = useSelector((state) => state.errorReducer.postError);
+//   const dispatch = useDispatch();
 
-      <div className="screen-container">
-        <div className="upload-container">
-          <div className="upload-title">Ajouter une Publication</div>
-          <form method="post" action="" className="upload-form">
-            <div className="input-group">
-              <label htmlFor="publication-title">
-                Titre de votre publication :
-              </label>
-              <input type="text" name="input-title" className="input-title" />
-              <span className="msg">Champ Valide</span>
-            </div>
+//   const handlePost = async () => {
+//     if (message || postPicture) {
+//       const data = new FormData();
+//       data.append("posterId", userData._id);
+//       data.append("message", message);
+//       if (file) data.append("file", file);
 
-            <div className="input-group">
-              <label htmlFor="publication-image">
-                Image de votre publication :
-              </label>
-              <input type="file" name="input-image" className="input-image" />
-              <span className="msg">Champ Valide</span>
-            </div>
+//       await dispatch(addPost(data));
+//       dispatch(getPosts());
+//       cancelPost();
+//     } else {
+//       alert("Veuillez entrer un message");
+//     }
+//   };
 
-            <div className="input-group">
-              <label htmlFor="publication-text">
-                Texte de votre publication :
-              </label>
-              <input type="text" name="input-text" className="input-text" />
-              <span className="msg">Champ Valide</span>
-            </div>
+//   const handlePicture = (e) => {
+//     setFile(e.target.files[0]);
+//   };
 
-            <button type="submit" className="publi-btn">
-              Publier
-            </button>
-          </form>
-        </div>
-      </div>
-    </>
-  );
-};
+//   const cancelPost = () => {
+//     setMessage("");
+//     setPostPicture("");
+//     setFile("");
+//   };
 
-export default PubliUploader;
+//   return (
+//     <>
+//       <Navbar />
+
+//       <div className="screen-container">
+//         <div className="upload-container">
+//           <div className="upload-title">Ajouter une Publication</div>
+//           <form method="post" action="" className="upload-form">
+//             {/* <div className="input-group">
+//               <label htmlFor="publication-title">
+//                 Titre de votre publication :
+//               </label>
+//               <input type="text" name="input-title" className="input-title" />
+//               <span className="msg">Champ Valide</span>
+//             </div> */}
+
+//             <div className="input-group">
+//               <label htmlFor="publication-image">
+//                 Image de votre publication :
+//               </label>
+//               <input
+//                 type="file"
+//                 name="file"
+//                 className="input-image"
+//                 accept=".jpg, .jpeg, .png"
+//                 onChange={(e) => handlePicture(e)}
+//               />
+//               {!isEmpty(error.format) && <span className="msg">{error.format}</span>}
+//               {!isEmpty(error.maxSize) && <span className="msg">{error.maxSize}</span>}
+//             </div>
+
+//             <div className="input-group">
+//               <label htmlFor="publication-text">
+//                 Texte de votre publication :
+//               </label>
+//               <textarea
+//                 type="text"
+//                 name="textarea-message"
+//                 className="input-text"
+//                 onChange={(e) => setMessage(e.target.value)}
+//                 value={message}
+//                 placeholder=""
+//               />
+//               <span className="msg">Champ Valide</span>
+//             </div>
+
+//             <button type="submit" className="publi-btn" onClick={handlePost}>
+//               Publier
+//             </button>
+//           </form>
+//         </div>
+//       </div>
+//     </>
+//   );
+// };
+
+// export default PubliUploader;
