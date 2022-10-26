@@ -15,40 +15,28 @@ module.exports.readPost = (req, res) => {
 };
 
 module.exports.createPost = async (req, res) => {
-  let fileName;
+  let filename = '';
+  // console.log(req.body.picture);
 
-  if (req.file !== null) {
-    try {
-      if (
-        req.file.detectedMimeType != "image/jpg" &&
-        req.file.detectedMimeType != "image/png" &&
-        req.file.detectedMimeType != "image/jpeg"
-      )
-        throw Error("invalid file");
-
-      if (req.file.size > 500000) throw Error("max size");
-    } catch (err) {
-      const errors = uploadErrors(err);
-      return res.status(201).json({ errors });
-    }
-    fileName = req.body.posterId + Date.now() + ".jpg";
-
-    await pipeline(
-      req.file.stream,
-      fs.createWriteStream(
-        `${__dirname}/../client/public/uploads/posts/${fileName}`
-      )
-    );
-  }
-
+if (req.body.picture != undefined) {
   const newPost = new postModel({
     posterId: req.body.posterId,
     message: req.body.message,
-    picture: req.file !== null ? "./uploads/posts/" + fileName : "",
-    video: req.body.video,
+    picture: `images/${req.file.filename}` + Date.now(),
     likers: [],
     comments: [],
   });
+} else {
+  newPost = new postModel({
+    posterId: req.body.posterId,
+    message: req.body.message,
+    picture: '',
+    likers: [],
+    comments: [],
+  });
+}
+
+  
 
   try {
     const post = await newPost.save();
@@ -97,7 +85,8 @@ module.exports.likePost = async (req, res) => {
       {
         $addToSet: { likers: req.body.id },
       },
-      { new: true })
+      { new: true }
+    )
       .then((data) => res.send(data))
       .catch((err) => res.status(500).send({ message: err }));
 
@@ -106,12 +95,14 @@ module.exports.likePost = async (req, res) => {
       {
         $addToSet: { likes: req.params.id },
       },
-      { new: true })
-            .then((data) => res.send(data))
-            .catch((err) => res.status(500).send({ message: err }));
-    } catch (err) {
-        return res.status(400).send(err);
-    }
+      { new: true }
+    )
+      .then((data) => res.send(data))
+      .catch((err) => res.status(500).send({ message: err }));
+  } catch (err) {
+    return;
+    // res.status(400).send(err);
+  }
 };
 
 module.exports.unlikePost = async (req, res) => {
@@ -124,21 +115,24 @@ module.exports.unlikePost = async (req, res) => {
       {
         $pull: { likers: req.body.id },
       },
-      { new: true })
-            .then((data) => res.send(data))
-            .catch((err) => res.status(500).send({ message: err }));
+      { new: true }
+    )
+      .then((data) => res.send(data))
+      .catch((err) => res.status(500).send({ message: err }));
 
     await UserModel.findByIdAndUpdate(
       req.body.id,
       {
         $pull: { likes: req.params.id },
       },
-      { new: true })
-            .then((data) => res.send(data))
-            .catch((err) => res.status(500).send({ message: err }));
-    } catch (err) {
-        return res.status(400).send(err);
-    }
+      { new: true }
+    )
+      .then((data) => res.send(data))
+      .catch((err) => res.status(500).send({ message: err }));
+  } catch (err) {
+    return;
+    // res.status(400).send(err);
+  }
 };
 
 module.exports.commentPost = (req, res) => {
@@ -152,18 +146,20 @@ module.exports.commentPost = (req, res) => {
         $push: {
           comments: {
             commenterId: req.body.commenterId,
-            commenterPseudo: req.body.commenterPseudo,
+            commenterFirstName: req.body.commenterFirstName,
             text: req.body.text,
             timestamp: new Date().getTime(),
           },
         },
       },
-      { new: true })
-            .then((data) => res.send(data))
-            .catch((err) => res.status(500).send({ message: err }));
-    } catch (err) {
-        return res.status(400).send(err);
-    }
+      { new: true }
+    )
+      .then((data) => res.send(data))
+      .catch((err) => res.status(500).send({ message: err }));
+  } catch (err) {
+    return;
+    // res.status(400).send(err);
+  }
 };
 
 module.exports.editCommentPost = (req, res) => {
@@ -203,10 +199,11 @@ module.exports.deleteCommentPost = (req, res) => {
           },
         },
       },
-      { new: true })
-            .then((data) => res.send(data))
-            .catch((err) => res.status(500).send({ message: err }));
-    } catch (err) {
-        return res.status(400).send(err);
-    }
+      { new: true }
+    )
+      .then((data) => res.send(data))
+      .catch((err) => res.status(500).send({ message: err }));
+  } catch (err) {
+    return res.status(400).send(err);
+  }
 };

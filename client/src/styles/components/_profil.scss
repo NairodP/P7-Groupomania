@@ -117,6 +117,7 @@
     }
 
     .update-bio-text {
+      text-align: center;
       cursor: pointer;
       min-height: 40px;
       border: 1px solid $color-5;
@@ -127,6 +128,11 @@
       font-weight: lighter;
       width: 100%;
       outline: none;
+
+      .bio-default-value {
+        font-style: italic;
+        font-size: 1.1em;
+      }
     }
   }
 }

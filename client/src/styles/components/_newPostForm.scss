@@ -69,6 +69,10 @@
           margin-left: 0;
         }
         .card-header {
+
+          h3 {
+            text-transform: capitalize;
+          }
           @media screen and (max-width: 632px) {
             flex-direction: column;
           }
@@ -121,7 +125,7 @@
       .icon {
         position: relative;
         cursor: pointer;
-        width: 30px;
+        width: 50px;
         height: 20px;
 
         img {
@@ -161,9 +165,16 @@
       }
       .btn-send {
         .cancel {
-          border-radius: 20px;
-          margin-right: 8px;
-          background: $white;
+          padding: 0.5em 1em;
+          margin: 0 auto 2em;
+          font-size: 0.9rem;
+          font-weight: lighter;
+          color: $white;
+          cursor: pointer;
+          outline: none;
+          border-radius: 0px 6px 6px 20px;
+          border: 1px solid rgba(191, 197, 239);
+          background-color: rgba(191, 197, 239, 0.35);
 
           &:hover {
             color: $color-4;

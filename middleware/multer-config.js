@@ -11,9 +11,8 @@ const storage = multer.diskStorage({
     callback(null, "images");
   },
   filename: (req, file, callback) => {
-    const fileName = req.body.name + req.body.userId;
+    const fileName = req.body.name + req.body.userId + Date.now();
 
-    // const extension = MIME_TYPES[file.mimetype];
     const extension = MIME_TYPES[file.mimetype];
     callback(null, fileName + "." + extension);
   },

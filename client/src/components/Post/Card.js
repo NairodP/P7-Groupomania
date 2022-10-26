@@ -38,7 +38,8 @@ const Card = ({ post }) => {
                 !isEmpty(usersData[0]) &&
                 usersData
                   .map((user) => {
-                    if (user._id === post.posterId) return user.picture;
+                    if (user._id === post.posterId) 
+                    return ("http://localhost:5000/" + user.picture);
                     else return null;
                   })
                   .join("")

@@ -38,7 +38,9 @@ const CardComments = ({ post }) => {
                   !isEmpty(usersData[0]) &&
                   usersData
                     .map((user) => {
-                      if (user._id === comment.commenterId) return user.picture;
+                      if (user._id === comment.commenterId) 
+                      return (
+                        "http://localhost:5000/" + user.picture);
                       else return null;
                     })
                     .join("")

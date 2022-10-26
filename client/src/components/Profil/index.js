@@ -49,7 +49,7 @@ const Profil = () => {
               {updateForm === false && (
                 <>
                   <p className="update-bio-text" onClick={() => setUpdateForm(!updateForm)}>
-                    {userData.bio}
+                    {userData.bio ? userData.bio : <span className="bio-default-value">Dites nous en plus sur vous</span>}
                   </p>
                   <button className="btn-bio" onClick={() => setUpdateForm(!updateForm)}>
                     Modifier bio

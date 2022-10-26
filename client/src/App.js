@@ -10,19 +10,19 @@ const App = () => {
   const dispatch = useDispatch(); 
 
   useEffect(() => {
-    const axiosToken = async () => {
+    const fetchToken = async () => {
       await axios({
         method: "get",
         url: `${process.env.REACT_APP_API_URL}jwtid`,
         withCredentials: true,
       })
         .then((res) => setUid(res.data))
-        .catch((err) => console.log(err));
+        .catch((err) => console.log("No token"));
     };
-    axiosToken();
+    fetchToken();
 
     if (uid) dispatch(getUser(uid))
-  }, [uid]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [uid, dispatch]);
 
   return (
     <UidContext.Provider value={uid}>

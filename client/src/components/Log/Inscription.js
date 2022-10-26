@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 const Inscription = () => {
   const [firstName, setFirstName] = useState("");
@@ -11,7 +11,7 @@ const Inscription = () => {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -28,7 +28,8 @@ const Inscription = () => {
       },
     })
       .then((res) => {
-        navigate("/");
+        // navigate("/log");
+        window.location.href = 'http://localhost:3000/home';
       })
       .catch((err) => {
         if (err.response.data.errors) {

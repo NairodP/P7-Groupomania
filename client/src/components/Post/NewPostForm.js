@@ -62,7 +62,7 @@ const NewPostForm = () => {
             <textarea
               name="message"
               id="message"
-              placeholder="Quoi de neuf ?"
+              placeholder="Publier ici ..."
               onChange={(e) => setMessage(e.target.value)}
               value={message}
             />
@@ -107,7 +107,7 @@ const NewPostForm = () => {
                     Annuler message
                   </button>
                 ) : null}
-                <button className="send" onClick={handlePost}>
+                <button className="btn-bio" onClick={handlePost}>
                   Envoyer
                 </button>
               </div>
