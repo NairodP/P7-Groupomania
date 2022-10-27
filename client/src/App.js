@@ -9,6 +9,7 @@ const App = () => {
   const [uid, setUid] = useState(null);
   const dispatch = useDispatch(); 
 
+  // Déclenche la fonction de manière asynchrone lorsque l'un des etats des parametres change
   useEffect(() => {
     const fetchToken = async () => {
       await axios({

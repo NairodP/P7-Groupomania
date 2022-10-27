@@ -4,7 +4,7 @@ import { uploadPicture } from "../../actions/userActions";
 
 const UploadImg = () => {
   const [file, setFile] = useState();
-  const error = useSelector((state) => state.errorReducer.userError);
+  // const error = useSelector((state) => state.errorReducer.userError);
   const dispatch = useDispatch();
   const userData = useSelector((state) => state.userReducer);
 
@@ -39,8 +39,8 @@ const UploadImg = () => {
             accept=".jpg, .jpeg, .png"
             onChange={(e) => setFile(e.target.files[0])}
           />
-          <p className="error error-msg-upload">{error.maxSize}</p>
-          <p className="error error-msg-upload">{error.format}</p>
+          {/* <p className="error error-msg-upload">{error.maxSize}</p>
+          <p className="error error-msg-upload">{error.format}</p> */}
           <button type="submit" className="publi-btn">
             Envoyer
           </button>

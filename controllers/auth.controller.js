@@ -11,35 +11,6 @@ const createToken = (id) => {
   });
 };
 
-// module.exports.signUp = async (req, res) => {
-//   const { firstName, lastName, email, password } = req.body;
-
-//   try {
-//     const user = await UserModel.create({ firstName, lastName, email, password });
-//     res.status(201).json({});
-//   } catch (err) {
-//     const errors = signUpErrors(err);
-//     console.log(err);
-//     res.status(400).send({ errors });
-//   }
-// };
-
-// module.exports.signIn = async (req, res) => {
-//   const { email, password } = req.body;
-
-//   try {
-//     const user = await UserModel.login(email, password);
-//     const token = createToken(user._id);
-//     res.cookie("jwt", token, { httpOnly: true, maxAge });
-//     res.status(200).json({});
-//   } catch (err) {
-//     const errors = signInErrors(err);
-//     res.status(400).json({ errors });
-//   }
-// };
-
-/////////////////////////////////////////////////////////////
-
 module.exports.signUp = async (req, res) => {
   const { firstName, lastName, email, password } = req.body;
 
@@ -69,8 +40,6 @@ module.exports.signIn = async (req, res) => {
     res.status(400).json({ errors });
   }
 };
-
-/////////////////////////////////////////////////////////////
 
 module.exports.logout = (req, res) => {
   res.cookie("jwt", "", { maxAge: 1 });

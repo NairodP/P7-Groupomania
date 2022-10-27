@@ -50,7 +50,7 @@ const NewPostForm = () => {
       ) : (
         <>
           <div className="data"></div>
-          <NavLink exact to="/profil">
+          <NavLink to="/profil">
             <div className="user-info">
               <img
                 src={"http://localhost:5000/" + userData.picture}
@@ -60,6 +60,7 @@ const NewPostForm = () => {
           </NavLink>
           <div className="post-form">
             <textarea
+              aria-label="zone-publi"
               name="message"
               id="message"
               placeholder="Publier ici ..."
@@ -92,6 +93,7 @@ const NewPostForm = () => {
               <div className="icon">
                 <img src="./img/icons/picture.svg" alt="img" />
                 <input
+                  aria-label="file-upload"
                   type="file"
                   id="file-upload"
                   name="file"

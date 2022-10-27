@@ -7,6 +7,7 @@ import DeleteCard from "./DeleteCard";
 import CardComments from "./CardComments";
 
 const Card = ({ post }) => {
+  const url = "http://localhost:5000/";
   const [isLoading, setIsLoading] = useState(true);
   const [isUpdated, setIsUpdated] = useState(false);
   const [textUpdate, setTextUpdate] = useState(null);
@@ -35,8 +36,7 @@ const Card = ({ post }) => {
           <div className="card-left">
             <img
               src={
-                !isEmpty(usersData[0]) &&
-                usersData
+                !isEmpty(usersData[0]) && usersData
                   .map((user) => {
                     if (user._id === post.posterId) 
                     return ("http://localhost:5000/" + user.picture);
@@ -77,7 +77,7 @@ const Card = ({ post }) => {
               </div>
             )}
             {post.picture && (
-              <img src={post.picture} alt="card-pic" className="card-pic" />
+              <img src={url + post.picture} alt="card-pic" className="card-pic" />
             )}
             {userData._id === post.posterId && (
               <div className="button-container">

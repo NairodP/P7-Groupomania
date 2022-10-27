@@ -96,6 +96,9 @@
             &:hover {
               transform: scale(1.2) translate(0px, 0px);
             }
+            @media screen and (max-width: 426px) {
+              transform: none;
+            }
           }
 
           .fas {
@@ -145,7 +148,13 @@
             background: $color-6;
             border: 1px solid transparent;
             width: 245px;
-            letter-spacing: .8px;
+            letter-spacing: 0.8px;
+            @media screen and (max-width: 426px) {
+              background: $color-2;
+              border: 1px solid transparent;
+              width: 240px;
+              letter-spacing: 0;
+            }
           }
         }
       }
@@ -177,6 +186,9 @@
 
         &:hover {
           transform: scale(1.07);
+          @media screen and (max-width: 426px) {
+            transform: none;
+          }
         }
 
         img {
@@ -190,7 +202,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      justify-content: space-between;
+      justify-content: flex-end;
+      gap: 2.5em;
       padding: 12px 0 4px;
 
       img {
@@ -201,6 +214,9 @@
 
         &:hover {
           transform: scale(1.2);
+          @media screen and (max-width: 426px) {
+            transform: none;
+          }
         }
       }
       .comment-icon,
@@ -218,7 +234,7 @@
     .comment-container.client {
       background: $color-2;
       border: none;
-      border-radius: 20px 20px 6px 20px;
+      border-radius: 20px 20px 20px 20px;
     }
     .comment-container {
       display: grid;
@@ -226,7 +242,7 @@
       border: 1px solid $color-2;
       padding: 15px;
       margin: 5px 0;
-      border-radius: 20px 20px 20px 6px;
+      border-radius: 20px 20px 20px 20px;
 
       img {
         height: 40px;
@@ -289,6 +305,9 @@
 
           &:hover {
             transform: scale(1.1);
+            @media screen and (max-width: 426px) {
+              transform: none;
+            }
           }
         }
 
@@ -305,6 +324,9 @@
 
             &:hover {
               transform: scale(1.05);
+              @media screen and (max-width: 426px) {
+                transform: none;
+              }
             }
           }
           input[type="text"] {
@@ -332,6 +354,9 @@
 
               &:hover {
                 background: $color-6;
+                @media screen and (max-width: 426px) {
+                  background: $white;
+                }
               }
 
               img {
@@ -351,6 +376,12 @@
                 border: 1px solid transparent;
                 width: inherit;
                 background: $color-6;
+                @media screen and (max-width: 426px) {
+                  padding: 5px;
+                  border: 1px solid;
+                  width: inherit;
+                  background: $color-2;
+                }
               }
             }
           }
@@ -369,8 +400,15 @@
         outline: none;
         border: 1px solid $color-3;
 
+        @media screen and (max-width: 426px) {
+          font-size: 0.9rem;
+        }
+
         &:focus {
           box-shadow: 0 0 2px rgba(51, 51, 51, 0.5);
+        }
+        @media screen and (max-width: 426px) {
+          box-shadow: none;
         }
       }
       input[type="submit"] {
@@ -387,6 +425,11 @@
           background: $color-4;
           letter-spacing: 2px;
           width: 130px;
+          @media screen and (max-width: 426px) {
+            background: $color-2;
+          letter-spacing: 0;
+          width: 120px;
+          }
         }
       }
       button {
@@ -396,6 +439,10 @@
 
         &:hover {
           background: $color-2;
+          @media screen and (max-width: 426px) {
+            background: $color-2;
+          
+          }
         }
       }
     }

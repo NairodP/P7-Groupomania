@@ -6,17 +6,20 @@ import Thread from "../components/Thread";
 import NewPostForm from "../components/Post/NewPostForm";
 
 const Home = () => {
+  const url = "http://localhost:5000/"
   const userData = useSelector((state) => state.userReducer);
 
   return (
     <div>
       <Navbar />
       <div className="welcome">
+        {userData.picture ?
         <img
-          src={"http://localhost:5000/" + userData.picture}
+          src={url + userData.picture}
           alt="profil"
           className="photo-profil"
-        />
+        /> : ""
+      }
         <div className="vertical-line"></div>
         <div className="anim">
           <Typewriter

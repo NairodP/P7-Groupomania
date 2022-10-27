@@ -15,28 +15,14 @@ module.exports.readPost = (req, res) => {
 };
 
 module.exports.createPost = async (req, res) => {
-  let filename = '';
-  // console.log(req.body.picture);
 
-if (req.body.picture != undefined) {
   const newPost = new postModel({
     posterId: req.body.posterId,
     message: req.body.message,
-    picture: `images/${req.file.filename}` + Date.now(),
+    picture: req.file !== undefined ? `images/post/${req.file.filename}` : "",
     likers: [],
     comments: [],
   });
-} else {
-  newPost = new postModel({
-    posterId: req.body.posterId,
-    message: req.body.message,
-    picture: '',
-    likers: [],
-    comments: [],
-  });
-}
-
-  
 
   try {
     const post = await newPost.save();

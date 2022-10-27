@@ -43,6 +43,10 @@ const userSchema = new mongoose.Schema(
     likes: {
       type: [String],
     },
+    isAdmin: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     timestamps: true,

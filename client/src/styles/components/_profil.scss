@@ -21,6 +21,10 @@
   border-radius: 100%;
   width: 40%;
   margin: -1em 0 3em;
+
+  @media screen and (max-width: 426px) {
+    margin: -0.5em 0 3em;
+  }
 }
 
 .upload-img {
@@ -47,6 +51,13 @@
         border-bottom: 1px solid $white;
         cursor: pointer;
         padding-bottom: 2px;
+
+        @media screen and (max-width: 426px) {
+          transform: none;
+          border: none;
+          padding-bottom: 3px;
+          cursor: default;
+        }
       }
     }
     .toggleDiv {
@@ -54,6 +65,10 @@
       align-items: center;
       justify-content: center;
       flex-direction: column;
+
+      @media screen and (max-width: 426px) {
+        margin: 5px;
+      }
 
       .error-msg-upload {
         @include flexCentre;
@@ -72,11 +87,17 @@
         color: $white;
         font-weight: lighter;
 
+        @media screen and (max-width: 426px) {
+          width: 80%;
+          margin-bottom: 1em;
+        }
+
         &:focus {
           box-shadow: 0 0 0 1px $white;
         }
       }
       .publi-btn {
+        margin-top: 10px;
         padding: 0.5em 1em;
         margin-bottom: 2em;
         font-size: 1.2rem;
@@ -91,6 +112,10 @@
         &:hover,
         &:focus {
           background-color: rgba(191, 197, 239);
+
+          @media screen and (max-width: 426px) {
+            background-color: rgba(191, 197, 239, 0.35);
+          }
         }
       }
     }
@@ -105,7 +130,7 @@
 
   .update-bio {
     .bio-title {
-      margin: 1em 0 .2em;
+      margin: 1em 0 0.2em;
       color: rgb(243, 243, 243);
       font-size: 1.3rem;
       text-align: left;
@@ -128,10 +153,18 @@
       font-weight: lighter;
       width: 100%;
       outline: none;
+      @media screen and (max-width: 426px) {
+        font-size: 1em;
+        border-radius: 20px;
+      }
 
       .bio-default-value {
         font-style: italic;
         font-size: 1.1em;
+
+        @media screen and (max-width: 426px) {
+          font-size: 1em;
+        }
       }
     }
   }
@@ -150,6 +183,11 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+
+  @media screen and (max-width: 426px) {
+    font-size: 1em;
+    border-radius: 20px;
+  }
 }
 
 .btn-bio {
@@ -161,13 +199,21 @@
   color: $white;
   cursor: pointer;
   outline: none;
-  border-radius: 6px 0px 20px 6px;
+  border-radius: 6px 5px 20px 6px;
   border: 1px solid rgba(191, 197, 239);
   background-color: rgba(191, 197, 239, 0.35);
 
   &:hover,
   &:focus {
     background-color: rgba(191, 197, 239);
+
+    @media screen and (max-width: 426px) {
+      background-color: rgba(191, 197, 239, 0.35);
+    }
+  }
+  @media screen and (max-width: 426px) {
+    border-radius: 20px;
+    margin-top: 5px;
   }
 }
 
@@ -175,4 +221,9 @@
   color: rgb(243, 243, 243);
   font-weight: lighter;
   font-size: 1.1rem;
+
+  @media screen and (max-width: 426px) {
+    font-size: .9rem;
+    text-align: center;
+  }
 }

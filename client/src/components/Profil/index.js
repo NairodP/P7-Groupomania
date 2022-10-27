@@ -10,10 +10,13 @@ const Profil = () => {
 
   const routeUpload = "http://localhost:5000/"
   const [bio, setBio] = useState("");
+  // Gestion d'Etat 
   const [updateForm, setUpdateForm] = useState(false);
   const userData = useSelector((state) => state.userReducer);
+  // extrait des morceaux de state et mettre le composant à jour sans chargement
 
   const dispatch = useDispatch();
+  // envoyer des actions depuis le composant
 
   const handleUpdate = () => {
     dispatch(updateBio(userData._id, bio));
